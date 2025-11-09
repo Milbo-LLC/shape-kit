@@ -1,0 +1,8 @@
+
+> @shape-kit/cad-core@0.0.0 dev /Users/noahmilberger/Documents/milbo/shape-kit/packages/cad-core
+> tsc -w --preserveWatchOutput
+
+[[90m5:04:33 PM[0m] Starting compilation in watch mode...
+
+[[90m5:04:35 PM[0m] Found 0 errors. Watching for file changes.
+

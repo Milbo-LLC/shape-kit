@@ -1,6 +1,7 @@
 {
   "extends": "@shape-kit/config/tsconfig.json",
   "compilerOptions": {
-    "moduleResolution": "NodeNext"
+    "moduleResolution": "NodeNext",
+    "module": "NodeNext"
   }
 }

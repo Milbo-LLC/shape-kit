@@ -1,0 +1,5 @@
+
+
+> @shape-kit/db@0.0.0 build /Users/noahmilberger/Documents/milbo/shape-kit/packages/db
+> tsc -p tsconfig.json
+

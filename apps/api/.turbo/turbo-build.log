@@ -1,0 +1,5 @@
+
+
+> @shape-kit/api@ build /Users/noahmilberger/Documents/milbo/shape-kit/apps/api
+> tsc -p tsconfig.json
+
