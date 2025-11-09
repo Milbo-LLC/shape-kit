@@ -1,6 +1,6 @@
 import { serve } from '@hono/node-server'
 import { Hono } from 'hono'
-import { trpcServer } from '@trpc/server/adapters/hono'
+import { fetchRequestHandler } from '@trpc/server/adapters/fetch'
 
 import {
   honoAuthMiddleware,
@@ -51,13 +51,14 @@ app.get('/auth/session', async (c) => {
   }
 })
 
-app.use(
-  '/trpc/*',
-  trpcServer({
+app.all('/trpc/*', (c) =>
+  fetchRequestHandler({
+    endpoint: '/trpc',
+    req: c.req.raw,
     router,
-    createContext: ({ req }) =>
+    createContext: () =>
       createContextFromHono({
-        auth: req.ctx.get('auth') ?? { session: null, user: null }
+        auth: c.get('auth') ?? { session: null, user: null }
       })
   })
 )

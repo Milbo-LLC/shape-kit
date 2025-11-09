@@ -2,11 +2,13 @@ import { betterAuth, type Adapter, type BetterAuthOptions } from 'better-auth'
 
 import { drizzleAdapter } from './adapter.js'
 
-const authOptions: BetterAuthOptions = {
+const authOptions = {
   database: drizzleAdapter as unknown as Adapter
-}
+} satisfies BetterAuthOptions
 
-export const auth = betterAuth(authOptions)
+type BetterAuthClient = ReturnType<typeof betterAuth>
+
+export const auth: BetterAuthClient = betterAuth(authOptions)
 
 export type AuthClient = typeof auth
 

@@ -2,8 +2,14 @@ import { createHmac, randomBytes } from 'node:crypto'
 
 type JwtPayload = Record<string, unknown>
 
-const base64UrlEncode = (input: Buffer | string) =>
-  Buffer.from(input).toString('base64').replace(/=/g, '').replace(/\+/g, '-').replace(/\//g, '_')
+const base64UrlEncode = (input: Buffer | string) => {
+  const buffer = typeof input === 'string' ? Buffer.from(input) : input
+  return buffer
+    .toString('base64')
+    .replace(/=/g, '')
+    .replace(/\+/g, '-')
+    .replace(/\//g, '_')
+}
 
 const base64UrlDecode = (input: string) => {
   const pad = 4 - (input.length % 4 || 4)

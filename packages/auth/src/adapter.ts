@@ -1,8 +1,13 @@
 import { and, eq } from 'drizzle-orm'
+import type { AnyPgTable } from 'drizzle-orm/pg-core'
 
 import { db, schema } from '@shape-kit/db'
 
-type TableName = keyof typeof schema
+type Schema = typeof schema
+
+type TableName = {
+  [Key in keyof Schema]: Schema[Key] extends AnyPgTable ? Key : never
+}[keyof Schema]
 
 const entityToTable: Record<string, TableName> = {
   user: 'users',
@@ -19,12 +24,12 @@ const entityToTable: Record<string, TableName> = {
   workspaceMemberships: 'workspaceMemberships'
 }
 
-const resolveTable = (entity: string) => {
+const resolveTable = (entity: string): AnyPgTable => {
   const tableName = entityToTable[entity]
   if (!tableName) {
     throw new Error(`Unknown entity "${entity}" for Better Auth adapter`)
   }
-  return schema[tableName]
+  return schema[tableName] as AnyPgTable
 }
 
 const buildWhere = (table: any, filter: Record<string, unknown> = {}) => {
