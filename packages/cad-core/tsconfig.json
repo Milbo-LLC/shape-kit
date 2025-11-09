@@ -1,0 +1,9 @@
+{
+  "extends": "@shape-kit/config/tsconfig.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "moduleResolution": "NodeNext",
+    "declaration": true
+  },
+  "include": ["src"]
+}
