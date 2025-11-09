@@ -1,31 +1,19 @@
 import { betterAuth, type Adapter, type BetterAuthOptions } from 'better-auth'
 
-const unconfiguredAdapter: Adapter = {
-  id: 'unconfigured',
-  async create() {
-    throw new Error('Auth adapter is not configured. Please provide a database adapter before using auth APIs.')
-  },
-  async findOne() {
-    throw new Error('Auth adapter is not configured. Please provide a database adapter before using auth APIs.')
-  },
-  async findMany() {
-    throw new Error('Auth adapter is not configured. Please provide a database adapter before using auth APIs.')
-  },
-  async update() {
-    throw new Error('Auth adapter is not configured. Please provide a database adapter before using auth APIs.')
-  },
-  async delete() {
-    throw new Error('Auth adapter is not configured. Please provide a database adapter before using auth APIs.')
-  },
-  async deleteMany() {
-    throw new Error('Auth adapter is not configured. Please provide a database adapter before using auth APIs.')
-  }
-}
+import { drizzleAdapter } from './adapter.js'
 
-const authOptions: BetterAuthOptions = {
-  database: unconfiguredAdapter
-}
+const authOptions = {
+  database: drizzleAdapter as unknown as Adapter
+} satisfies BetterAuthOptions
 
-export const auth = betterAuth(authOptions) as ReturnType<typeof betterAuth>
+type BetterAuthClient = ReturnType<typeof betterAuth>
+
+export const auth: BetterAuthClient = betterAuth(authOptions)
 
 export type AuthClient = typeof auth
+
+export { drizzleAdapter }
+export * from './middleware.js'
+export * from './roles.js'
+export * from './session.js'
+export * from './types.js'

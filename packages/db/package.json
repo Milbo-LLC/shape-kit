@@ -12,8 +12,8 @@
     "test": "vitest"
   },
   "dependencies": {
-    "better-sqlite3": "^9.4.0",
-    "drizzle-orm": "^0.30.9"
+    "drizzle-orm": "^0.30.9",
+    "pg": "^8.11.5"
   },
   "devDependencies": {
     "@shape-kit/config": "workspace:*"

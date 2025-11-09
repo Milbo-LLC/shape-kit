@@ -10,6 +10,9 @@
     "test": "vitest"
   },
   "dependencies": {
+    "@shape-kit/auth": "workspace:*",
+    "@shape-kit/trpc": "workspace:*",
+    "@trpc/server": "^10.45.2",
     "@hono/node-server": "^1.4.0",
     "hono": "^4.2.7"
   },
