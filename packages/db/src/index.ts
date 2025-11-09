@@ -1,12 +1,30 @@
-import Database from 'better-sqlite3'
-import { drizzle } from 'drizzle-orm/better-sqlite3'
+import type { NodePgDatabase } from 'drizzle-orm/node-postgres'
+import { drizzle } from 'drizzle-orm/node-postgres'
+import { Pool } from 'pg'
 
-import { projects } from './schema.js'
+import * as schema from './schema.js'
+export * from './security.js'
 
-const sqlite = new Database('shape-kit.db')
+let dbInstance: NodePgDatabase<typeof schema> | null = null
 
-export const db = drizzle(sqlite)
-
-export const schema = {
-  projects
+export const getDatabase = () => {
+  if (dbInstance) return dbInstance
+  const connectionString = process.env.DATABASE_URL
+  if (!connectionString) {
+    throw new Error('DATABASE_URL environment variable must be set to connect to Postgres.')
+  }
+  const pool = new Pool({ connectionString })
+  dbInstance = drizzle(pool, { schema })
+  return dbInstance
 }
+
+export const db = new Proxy({} as NodePgDatabase<typeof schema>, {
+  get(_target, property) {
+    const instance = getDatabase() as any
+    return Reflect.get(instance, property)
+  }
+})
+
+export { schema }
+
+export type DatabaseClient = ReturnType<typeof getDatabase>
