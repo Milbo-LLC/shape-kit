@@ -1,0 +1,20 @@
+{
+  "name": "@shape-kit/api",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
+    "lint": "eslint .",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.4.0",
+    "hono": "^4.2.7"
+  },
+  "devDependencies": {
+    "@shape-kit/config": "workspace:*",
+    "tsx": "^4.7.0"
+  }
+}

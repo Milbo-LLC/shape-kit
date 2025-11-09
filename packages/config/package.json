@@ -1,0 +1,21 @@
+{
+  "name": "@shape-kit/config",
+  "version": "0.0.0",
+  "private": true,
+  "type": "commonjs",
+  "files": [
+    "eslint.cjs",
+    "prettier.cjs",
+    "tsconfig.json"
+  ],
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^7.5.0",
+    "@typescript-eslint/parser": "^7.5.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.5"
+  }
+}
