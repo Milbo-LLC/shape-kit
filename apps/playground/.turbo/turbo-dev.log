@@ -1,0 +1,14 @@
+
+> @shape-kit/playground@ dev /Users/noahmilberger/Documents/milbo/shape-kit/apps/playground
+> next dev
+
+  [1m[38;2;173;127;168m▲ Next.js 14.2.33[39m[22m
+  - Local:        http://localhost:3000
+  - Experiments (use with caution):
+    · typedRoutes
+
+ [32m[1m✓[22m[39m Starting...
+ [32m[1m✓[22m[39m Ready in 1744ms
+ [37m[1m○[22m[39m Compiling / ...
+ [32m[1m✓[22m[39m Compiled / in 1434ms (455 modules)
+ GET / [32m200[39m in 1555ms

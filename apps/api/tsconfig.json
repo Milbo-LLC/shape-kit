@@ -2,6 +2,7 @@
   "extends": "@shape-kit/config/tsconfig.json",
   "compilerOptions": {
     "outDir": "dist",
+    "module": "NodeNext",
     "moduleResolution": "NodeNext"
   },
   "include": ["src"]
