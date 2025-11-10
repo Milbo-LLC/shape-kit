@@ -5,3 +5,9 @@ yarn.lock
 .DS_Store
 dist
 .next
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+!.env.example

@@ -5,6 +5,10 @@
     "jsx": "preserve",
     "allowJs": true,
     "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    },
     "lib": [
       "dom",
       "dom.iterable",
