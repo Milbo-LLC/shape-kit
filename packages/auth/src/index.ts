@@ -21,13 +21,8 @@ function getEnvValue(key: string) {
 const googleClientId = getEnvValue('GOOGLE_CLIENT_ID')
 const googleClientSecret = getEnvValue('GOOGLE_CLIENT_SECRET')
 
-export const auth = betterAuth({
-  database: drizzleAdapter(db, {
-    users: schema.users,
-    sessions: schema.sessions,
-    accounts: schema.accounts,
-    verificationTokens: schema.verificationTokens
-  }),
+const authConfig = betterAuth({
+  database: drizzleAdapter(db, schema),
   providers: [
     google({
       clientId: googleClientId,
@@ -35,6 +30,8 @@ export const auth = betterAuth({
     })
   ]
 })
+
+export const auth: ReturnType<typeof betterAuth> = authConfig
 
 export type AuthClient = typeof auth
 
